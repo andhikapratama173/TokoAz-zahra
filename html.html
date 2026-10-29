@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kasir & Manajemen Stok Warung</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🏪 Warung Digital - Kasir & Stok</h1>
+    </header>
+
+    <div class="container">
+        <!-- SEKSI KASIR -->
+        <section class="card pos-section">
+            <h2>🛒 Mesin Kasir (POS)</h2>
+            
+            <div class="form-group">
+                <label for="select-product">Pilih Barang:</label>
+                <select id="select-product">
+                    <option value="">-- Pilih Barang --</option>
+                </select>
+            </div>
+
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="cart-qty">Jumlah:</label>
+                    <input type="number" id="cart-qty" min="1" value="1">
+                </div>
+                <button id="btn-add-to-cart" class="btn btn-primary">Tambah ke Keranjang</button>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Barang</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Subtotal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-table-body">
+                    <!-- Item keranjang dimasukkan via JS -->
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <h3>Total: Rp <span id="cart-total">0</span></h3>
+                <div class="payment-group">
+                    <label for="pay-amount">Uang Bayar (Rp):</label>
+                    <input type="number" id="pay-amount" placeholder="0">
+                    <button id="btn-checkout" class="btn btn-success">Bayar & Kurangi Stok</button>
+                </div>
+                <h4>Kembalian: Rp <span id="change-amount">0</span></h4>
+            </div>
+        </section>
+
+        <!-- SEKSI MANAJEMEN STOK -->
+        <section class="card stock-section">
+            <h2>📦 Manajemen Stok Barang</h2>
+            
+            <form id="form-product" class="product-form">
+                <input type="hidden" id="product-id">
+                <div class="form-group">
+                    <label for="product-name">Nama Barang:</label>
+                    <input type="text" id="product-name" placeholder="Contoh: Kopi Kapal Api" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Harga (Rp):</label>
+                    <input type="number" id="product-price" placeholder="Contoh: 3000" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-stock">Jumlah Stok:</label>
+                    <input type="number" id="product-stock" placeholder="Contoh: 50" min="0" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="btn-save-product" class="btn btn-success">Tambah Barang</button>
+                    <button type="button" id="btn-cancel-edit" class="btn btn-secondary" style="display:none;">Batal Edit</button>
+                </div>
+            </form>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nama Barang</th>
+                        <th>Harga</th>
+                        <th>Stok</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="stock-table-body">
+                    <!-- Data barang dimasukkan via JS -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
